@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proyecto_PNT1.Context;
 
@@ -11,9 +12,11 @@ using Proyecto_PNT1.Context;
 namespace Proyecto_PNT1.Migrations
 {
     [DbContext(typeof(ProyectoDatabaseContext))]
-    partial class ProyectoDatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20240626175426_Creacion")]
+    partial class Creacion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,30 +24,6 @@ namespace Proyecto_PNT1.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("Proyecto_PNT1.Models.Login", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("RememberMe")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Login");
-                });
 
             modelBuilder.Entity("Proyecto_PNT1.Models.Profesional", b =>
                 {
@@ -104,20 +83,12 @@ namespace Proyecto_PNT1.Migrations
                     b.Property<DateTime>("FechaPublicacion")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("Remuneracion")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<string>("Requisitos")
                         .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("Titulo")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Ubicacion")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
@@ -144,14 +115,6 @@ namespace Proyecto_PNT1.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("EsProfesional")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Experiencia")
-                        .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(25)
@@ -159,13 +122,8 @@ namespace Proyecto_PNT1.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<string>("Profesion")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 

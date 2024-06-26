@@ -1,0 +1,19 @@
+﻿@model Proyecto_PNT1.Models.Usuario
+
+@{
+    ViewData["Title"] = "Detalles del Profesional";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h2 class="card-title">@Model.Nombre @Model.Apellido</h2>
+            <p class="card-text"><strong>Profesión:</strong> @Model.Profesion</p>
+            <p class="card-text"><strong>Experiencia:</strong> @Model.Experiencia</p>
+            <p class="card-text"><strong>Email:</strong> @Model.Email</p>
+        </div>
+        <div class="card-footer text-center">
+            <a href="@Url.Action("Index", "Profesionals")" class="btn btn-secondary">Volver a la lista</a>
+        </div>
+    </div>
+</div>

@@ -5,7 +5,7 @@
 namespace Proyecto_PNT1.Migrations
 {
     /// <inheritdoc />
-    public partial class AdjustDeleteBehavior : Migration
+    public partial class modificarbd : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

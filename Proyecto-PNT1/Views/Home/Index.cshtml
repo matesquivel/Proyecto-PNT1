@@ -1,8 +1,91 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Página Principal";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="~/images/propuestas.jpg" alt="Propuestas de Trabajo">
+                <div class="card-body">
+                    <h5 class="card-title">Propuestas de Trabajo</h5>
+                    <p class="card-text">Explora nuestras oportunidades de empleo y encuentra el trabajo ideal.</p>
+                    <a href="@Url.Action("Index", "Propuestas")" class="btn btn-primary">Ver Propuestas</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="~/images/profesionales.jpg" alt="Profesionales">
+                <div class="card-body">
+                    <h5 class="card-title">Profesionales</h5>
+                    <p class="card-text">Conecta con profesionales altamente calificados en diferentes áreas.</p>
+                    <a href="@Url.Action("Index", "Profesionals")" class="btn btn-primary">Ver Profesionales</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="~/images/comunidad.jpg" alt="Comunidad">
+                <div class="card-body">
+                    <h5 class="card-title">Comunidad</h5>
+                    <p class="card-text">Únete a nuestra comunidad de expertos y entusiastas de la tecnología.</p>
+                    <a href="@Url.Action("Index", "Comunidad")" class="btn btn-primary">Ver Comunidad</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="d-block w-100 bg-light p-4">
+                            <h5>Experiencias</h5>
+                            <p>Esta plataforma me ayudó a encontrar el trabajo de mis sueños. ¡Altamente recomendada!</p>
+                            <footer class="blockquote-footer">Juan Pérez</footer>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-block w-100 bg-light p-4">
+                            <h5>Experiencias</h5>
+                            <p>TechConnect es la mejor manera de conectar con profesionales calificados.</p>
+                            <footer class="blockquote-footer">María Gómez</footer>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-block w-100 bg-light p-4">
+                            <h5>Experiencias</h5>
+                            <p>Gracias a esta plataforma, encontré oportunidades laborales únicas.</p>
+                            <footer class="blockquote-footer">Luis Rodríguez</footer>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-12 text-center">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a href="@Url.Action("Perfil", "Usuarios")" class="btn btn-secondary">Perfil</a>
+                <a href="@Url.Action("Logout", "Usuarios")" class="btn btn-danger">Logout</a>
+            }
+            else
+            {
+                <a href="@Url.Action("Create", "Usuarios")" class="btn btn-primary">Registrate</a>
+                <a href="@Url.Action("Login", "Usuarios")" class="btn btn-primary">Iniciar Sesión</a>
+            }
+        </div>
+    </div>
 </div>

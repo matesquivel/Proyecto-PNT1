@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proyecto_PNT1.Context;
 
@@ -11,9 +12,11 @@ using Proyecto_PNT1.Context;
 namespace Proyecto_PNT1.Migrations
 {
     [DbContext(typeof(ProyectoDatabaseContext))]
-    partial class ProyectoDatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20240626194308_AgregoLogin1")]
+    partial class AgregoLogin1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -104,20 +107,12 @@ namespace Proyecto_PNT1.Migrations
                     b.Property<DateTime>("FechaPublicacion")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("Remuneracion")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<string>("Requisitos")
                         .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("Titulo")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Ubicacion")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");

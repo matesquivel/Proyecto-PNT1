@@ -1,0 +1,38 @@
+﻿@model Proyecto_PNT1.Models.Usuario
+
+@{
+    ViewData["Title"] = "Perfil";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-sm border-0 rounded">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4 class="mb-0">Mi Perfil</h4>
+                </div>
+                <div class="card-body p-4">
+                    <dl class="row">
+                        <dt class="col-sm-4">Nombre</dt>
+                        <dd class="col-sm-8">@Model.Nombre</dd>
+
+                        <dt class="col-sm-4">Apellido</dt>
+                        <dd class="col-sm-8">@Model.Apellido</dd>
+
+                        <dt class="col-sm-4">Email</dt>
+                        <dd class="col-sm-8">@Model.Email</dd>
+
+                        @if (Model.EsProfesional)
+                        {
+                            <dt class="col-sm-4">Profesión</dt>
+                            <dd class="col-sm-8">@Model.Profesion</dd>
+
+                            <dt class="col-sm-4">Experiencia</dt>
+                            <dd class="col-sm-8">@Model.Experiencia</dd>
+                        }
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

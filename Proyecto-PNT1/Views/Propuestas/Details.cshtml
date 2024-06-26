@@ -1,0 +1,35 @@
+﻿@model Proyecto_PNT1.Models.Propuesta
+
+@{
+    ViewData["Title"] = "Detalles de la Propuesta";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3>@Model.Titulo</h3>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Descripción</h5>
+                    <p class="card-text">@Model.Descripcion</p>
+
+                    <h5 class="card-title">Requisitos</h5>
+                    <p class="card-text">@Model.Requisitos</p>
+
+                    <h5 class="card-title">Fecha de Publicación</h5>
+                    <p class="card-text">@Model.FechaPublicacion.ToString("dd/MM/yyyy")</p>
+
+                    <h5 class="card-title">Ubicación</h5>
+                    <p class="card-text">@Model.Ubicacion</p>
+
+                    <h5 class="card-title">Remuneración</h5>
+                    <p class="card-text">@Model.Remuneracion</p>
+
+                    <a href="javascript:history.back()" class="btn btn-secondary mt-3">Volver</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

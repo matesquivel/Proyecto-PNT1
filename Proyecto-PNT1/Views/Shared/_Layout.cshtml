@@ -3,28 +3,51 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Proyecto_PNT1</title>
+    <title>@ViewData["Title"] - TechConnect</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Proyecto_PNT1.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-custom navbar-light border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Proyecto_PNT1</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TechConnect</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Página Principal</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link" asp-area="" asp-controller="Propuestas" asp-action="Index">Propuestas</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Profesionals" asp-action="Index">Ver Profesionales</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Comunidad" asp-action="Index">Comunidad</a>
+                        </li>
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Usuarios" asp-action="Create">Registro</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Usuarios" asp-action="Login">Login</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Usuarios" asp-action="Perfil">Perfil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Usuarios" asp-action="Logout">Logout</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
@@ -38,7 +61,16 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - Proyecto_PNT1 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2024 - TechConnect - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="row mt-3">
+                <div class="col-12 text-center">
+                    <a class="text-dark" asp-area="" asp-controller="Home" asp-action="Index">Página Principal</a> |
+                    <a class="text-dark" asp-area="" asp-controller="Usuarios" asp-action="Create">Registro</a> |
+                    <a class="text-dark" asp-area="" asp-controller="Propuestas" asp-action="Index">Propuestas</a> |
+                    <a class="text-dark" asp-area="" asp-controller="Profesionals" asp-action="Index">Ver Profesionales</a> |
+                    <a class="text-dark" asp-area="" asp-controller="Comunidad" asp-action="Index">Comunidad</a>
+                </div>
+            </div>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
