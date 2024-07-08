@@ -13,5 +13,8 @@ namespace Proyecto_PNT1.Context
         public DbSet<Propuesta> Propuestas { get; set; }
         public DbSet<Profesional> Profesionales { get; set; }
         public DbSet<Proyecto_PNT1.Models.Login> Login { get; set; } = default!;
+        public DbSet<Postulacion> Postulaciones { get; set; }
+        public DbSet<Contacto> Contactos { get; set; }
+
     }
 }

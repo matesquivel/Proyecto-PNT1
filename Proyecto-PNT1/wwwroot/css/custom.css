@@ -1,0 +1,145 @@
+﻿body {
+    background-color: #f4f4f4;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+}
+
+.navbar-custom {
+    background-color: #2c3e50;
+    color: white;
+}
+
+    .navbar-custom .navbar-brand,
+    .navbar-custom .nav-link {
+        color: white;
+    }
+
+        .navbar-custom .navbar-brand:hover,
+        .navbar-custom .nav-link:hover {
+            color: #e74c3c;
+        }
+
+    .navbar-custom .join-btn .nav-link {
+        background-color: #e74c3c;
+        color: white;
+        border-radius: 5px;
+        padding: 5px 10px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+        .navbar-custom .join-btn .nav-link:hover {
+            background-color: #c0392b;
+            color: white;
+        }
+
+.footer-custom {
+    background-color: #34495e;
+    color: white;
+    padding: 20px 0;
+}
+
+    .footer-custom .social-icons a {
+        font-size: 1.5rem;
+        margin: 0 10px;
+        color: white;
+        transition: color 0.3s;
+    }
+
+        .footer-custom .social-icons a:hover {
+            color: #e74c3c;
+        }
+
+.card-custom {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    background-color: white;
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: #333;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+    .card-custom:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-custom .card-title {
+        color: #2c3e50;
+        font-size: 1.25rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+    }
+
+    .card-custom .card-text {
+        color: #666;
+    }
+
+.carousel-container {
+    margin-top: 50px; /* Add space above the carousel */
+}
+
+.carousel-item {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    min-height: 200px; /* Adjust height as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    max-width: 80%;
+    margin: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #2c3e50;
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 15px;
+}
+
+.section {
+    padding: 100px 0;
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+    .section .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+    }
+
+.section-content {
+    position: relative;
+    z-index: 2;
+}
+
+.section.bg-1 {
+    background: url('/images/propuestas.jpg') center center/cover no-repeat;
+}
+
+.section.bg-2 {
+    background: url('/images/profesionales.jpg') center center/cover no-repeat;
+}
+
+.section.bg-3 {
+    background: url('/images/comunidad.jpg') center center/cover no-repeat;
+}

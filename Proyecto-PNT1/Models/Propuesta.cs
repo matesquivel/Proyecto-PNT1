@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Proyecto_PNT1.Models
 
@@ -40,6 +41,10 @@ namespace Proyecto_PNT1.Models
         [Required(ErrorMessage = "Debe especificar un valor para {0}.")]
         [Display(Name = "Remuneración")]
         [DataType(DataType.Currency)]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Remuneracion { get; set; }
+
+        [Required]
+        public string CreadorId { get; set; }
     }
 }

@@ -1,70 +1,22 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
-}
-
-body {
-    background-color: #f8f9fa; /* Color de fondo claro */
-    color: #343a40; /* Color del texto */
-}
-
-.navbar-custom {
-    background-color: #007bff; /* Color de fondo para la navegación */
-    color: #ffffff; /* Color del texto para la navegación */
-}
-
-    .navbar-custom .navbar-brand, .navbar-custom .nav-link {
-        color: #ffffff; /* Color del texto para los enlaces de la navegación */
-    }
-
-.footer-custom {
-    background-color: #343a40; /* Color de fondo para el pie de página */
-    color: #ffffff; /* Color del texto para el pie de página */
-}
-
-.card-custom {
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-}
-
-    .card-custom:hover {
-        transform: translateY(-5px);
-    }
-
-.btn-custom {
-    background-color: #007bff;
-    color: #ffffff;
-    border-radius: 20px;
-    padding: 10px 20px;
-    transition: background-color 0.3s;
-}
-
-    .btn-custom:hover {
-        background-color: #0056b3;
-    }
-
-.carousel-item {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 60px;
 }

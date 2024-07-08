@@ -1,81 +1,59 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - TechConnect</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/custom.css" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-custom navbar-light border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TechConnect</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Página Principal</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Propuestas" asp-action="Index">Propuestas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Profesionals" asp-action="Index">Ver Profesionales</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Comunidad" asp-action="Index">Comunidad</a>
-                        </li>
-                        @if (!User.Identity.IsAuthenticated)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Usuarios" asp-action="Create">Registro</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Usuarios" asp-action="Login">Login</a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Usuarios" asp-action="Perfil">Perfil</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Usuarios" asp-action="Logout">Logout</a>
-                            </li>
-                        }
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
+    <nav class="navbar navbar-custom navbar-expand-lg">
         <div class="container">
-            &copy; 2024 - TechConnect - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            <div class="row mt-3">
-                <div class="col-12 text-center">
-                    <a class="text-dark" asp-area="" asp-controller="Home" asp-action="Index">Página Principal</a> |
-                    <a class="text-dark" asp-area="" asp-controller="Usuarios" asp-action="Create">Registro</a> |
-                    <a class="text-dark" asp-area="" asp-controller="Propuestas" asp-action="Index">Propuestas</a> |
-                    <a class="text-dark" asp-area="" asp-controller="Profesionals" asp-action="Index">Ver Profesionales</a> |
-                    <a class="text-dark" asp-area="" asp-controller="Comunidad" asp-action="Index">Comunidad</a>
+            <a class="navbar-brand" href="/">TechConnect</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="/Propuestas">Propuestas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Profesionals">Ver Profesionales</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Comunidad">Comunidad</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Usuarios/Login">Iniciar Sesión</a></li>
+                    <li class="nav-item join-btn"><a class="nav-link" href="/Usuarios/Create">Únete</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main role="main" class="container mt-5">
+        @RenderBody()
+    </main>
+    <footer class="footer-custom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <p>&copy; 2024 - TechConnect - <a href="/Privacy">Privacy</a></p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="social-icons">
+                        <a href="#" class="fab fa-facebook"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+                <div class="col-md-4 text-right">
+                    <p><a href="/Propuestas">Propuestas</a> | <a href="/Profesionals">Ver Profesionales</a> | <a href="/Comunidad">Comunidad</a></p>
                 </div>
             </div>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

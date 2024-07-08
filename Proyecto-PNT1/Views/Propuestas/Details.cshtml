@@ -1,4 +1,5 @@
-﻿@model Proyecto_PNT1.Models.Propuesta
+﻿@using System.Security.Claims
+@model Proyecto_PNT1.Models.Propuesta
 
 @{
     ViewData["Title"] = "Detalles de la Propuesta";
@@ -27,6 +28,11 @@
                     <h5 class="card-title">Remuneración</h5>
                     <p class="card-text">@Model.Remuneracion</p>
 
+                    @if (User.Identity.IsAuthenticated && User.FindFirstValue(ClaimTypes.NameIdentifier) == @Model.CreadorId)
+                    {
+                        <a href="@Url.Action("Edit", "Propuestas", new { id = Model.Id })" class="btn btn-primary">Editar</a>
+                        <a href="@Url.Action("Delete", "Propuestas", new { id = Model.Id })" class="btn btn-danger">Eliminar</a>
+                    }
                     <a href="javascript:history.back()" class="btn btn-secondary mt-3">Volver</a>
                 </div>
             </div>

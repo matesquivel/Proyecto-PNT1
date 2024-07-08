@@ -23,11 +23,16 @@ namespace Proyecto_PNT1.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [StringLength(30)]
-        [Required(ErrorMessage = "Debe especificar un valor para {0}.")]
+        [Required(ErrorMessage = "La contraseña es obligatoria.")]
         [DataType(DataType.Password)]
         [Display(Name = "Contraseña")]
         public string Password { get; set; }
+
+        [Required(ErrorMessage = "La confirmación de contraseña es obligatoria.")]
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirmar Contraseña")]
+        [Compare("Password", ErrorMessage = "Las contraseñas no coinciden.")]
+        public string ConfirmPassword { get; set; }
 
         [Required]
         [Display(Name = "¿Es Profesional?")]

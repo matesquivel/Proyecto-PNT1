@@ -1,27 +1,23 @@
 ﻿@model IEnumerable<Proyecto_PNT1.Models.Usuario>
 
 @{
-    ViewData["Title"] = "Ver Profesionales";
+    ViewData["Title"] = "Profesionales";
 }
 
-<h1 class="text-center">Profesionales</h1>
-
-<div class="container">
+<div class="container mt-5">
+    <h1 class="text-center mb-5">Profesionales</h1>
     <div class="row">
         @foreach (var profesional in Model)
         {
             <div class="col-md-4 mb-4">
-                <div class="card h-100 shadow-sm">
+                <a href="@Url.Action("Details", "Profesionales", new { id = profesional.Id })" class="card card-custom">
                     <div class="card-body">
                         <h5 class="card-title">@profesional.Nombre @profesional.Apellido</h5>
                         <p class="card-text"><strong>Profesión:</strong> @profesional.Profesion</p>
                         <p class="card-text"><strong>Experiencia:</strong> @profesional.Experiencia</p>
                         <p class="card-text"><strong>Email:</strong> @profesional.Email</p>
                     </div>
-                    <div class="card-footer text-center">
-                        <a href="@Url.Action("Details", "Profesionals", new { id = profesional.Id })" class="btn btn-primary">Ver Perfil</a>
-                    </div>
-                </div>
+                </a>
             </div>
         }
     </div>

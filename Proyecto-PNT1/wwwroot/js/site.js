@@ -1,4 +1,12 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿$(document).ready(function () {
+    // Tooltip para los botones de redes sociales
+    $('[data-toggle="tooltip"]').tooltip();
 
-// Write your JavaScript code.
+    // Efecto de transición para las tarjetas de propuestas
+    $('.card-custom').each(function (i) {
+        $(this).delay(i * 150).fadeIn(500);
+    });
+
+    // Inicializar el carrusel
+    $('#testimonialCarousel').carousel();
+});

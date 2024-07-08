@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Proyecto_PNT1.Context;
 using Proyecto_PNT1.Models;
+using System;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Proyecto_PNT1.Controllers
 {
@@ -50,14 +49,14 @@ namespace Proyecto_PNT1.Controllers
         }
 
         // POST: Propuestas/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Titulo,Descripcion,Requisitos,Empresa,Ubicacion,Remuneracion")] Propuesta propuesta)
+        public async Task<IActionResult> Create([Bind("Id,Titulo,Descripcion,Requisitos,FechaPublicacion,Ubicacion,Remuneracion")] Propuesta propuesta)
         {
             if (ModelState.IsValid)
             {
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                propuesta.CreadorId = userId;
                 _context.Add(propuesta);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -74,7 +73,7 @@ namespace Proyecto_PNT1.Controllers
             }
 
             var propuesta = await _context.Propuestas.FindAsync(id);
-            if (propuesta == null)
+            if (propuesta == null || propuesta.CreadorId != User.FindFirstValue(ClaimTypes.NameIdentifier))
             {
                 return NotFound();
             }
@@ -82,11 +81,9 @@ namespace Proyecto_PNT1.Controllers
         }
 
         // POST: Propuestas/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Titulo,Descripcion,Requisitos,FechaPublicacion,Empresa")] Propuesta propuesta)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Titulo,Descripcion,Requisitos,FechaPublicacion,Ubicacion,Remuneracion")] Propuesta propuesta)
         {
             if (id != propuesta.Id)
             {
@@ -97,7 +94,20 @@ namespace Proyecto_PNT1.Controllers
             {
                 try
                 {
-                    _context.Update(propuesta);
+                    var originalPropuesta = await _context.Propuestas.FindAsync(id);
+                    if (originalPropuesta == null || originalPropuesta.CreadorId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+                    {
+                        return NotFound();
+                    }
+
+                    originalPropuesta.Titulo = propuesta.Titulo;
+                    originalPropuesta.Descripcion = propuesta.Descripcion;
+                    originalPropuesta.Requisitos = propuesta.Requisitos;
+                    originalPropuesta.FechaPublicacion = propuesta.FechaPublicacion;
+                    originalPropuesta.Ubicacion = propuesta.Ubicacion;
+                    originalPropuesta.Remuneracion = propuesta.Remuneracion;
+
+                    _context.Update(originalPropuesta);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -126,7 +136,7 @@ namespace Proyecto_PNT1.Controllers
 
             var propuesta = await _context.Propuestas
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (propuesta == null)
+            if (propuesta == null || propuesta.CreadorId != User.FindFirstValue(ClaimTypes.NameIdentifier))
             {
                 return NotFound();
             }
@@ -140,12 +150,11 @@ namespace Proyecto_PNT1.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var propuesta = await _context.Propuestas.FindAsync(id);
-            if (propuesta != null)
+            if (propuesta != null && propuesta.CreadorId == User.FindFirstValue(ClaimTypes.NameIdentifier))
             {
                 _context.Propuestas.Remove(propuesta);
+                await _context.SaveChangesAsync();
             }
-
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
@@ -153,5 +162,6 @@ namespace Proyecto_PNT1.Controllers
         {
             return _context.Propuestas.Any(e => e.Id == id);
         }
+
     }
 }
